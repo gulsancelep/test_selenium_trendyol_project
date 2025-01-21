@@ -6,14 +6,13 @@ import org.openqa.selenium.WebDriver;
 
 public class CategoryPage extends Actions {
 
-    private  static  final By PRODUCT = By.xpath("((//div[@data-index = 2])[1]//a)[1]");
-    private  static  final String IS_SEARCHING_PAGE = "https://www.amazon.com/s?k=samsung&ref=nb_sb_noss_2";
+    private  static  final By PRODUCT = By.xpath("//*[@id=\"search-app\"]/div/div/div/div[2]/div[4]/div[1]/div/div[1]");
+    private  static  final String IS_SEARCHING_PAGE = "https://www.trendyol.com/sr?q=kablosuz%20kulaklik&qt=kablosuz%20kulaklik&st=kablosuz%20kulaklik&os=1";
 
 
     public CategoryPage(WebDriver driver) {
         super(driver);
     }
-
 
     public void  productClick() {
         click(PRODUCT);

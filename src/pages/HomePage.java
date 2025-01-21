@@ -6,25 +6,27 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends Actions {
 
-    private static final By NAV_SIGN_IN = By.id("nav-link-accountList");
-    private  static  final String search_input = "Samsung";
-    private  static  final By SEARCHING = By.id("twotabsearchtextbox");
-    private  static  final By SEARCH_CLICK = By.id("nav-search-submit-button");
+    private  static  final String search_input = "kablosuz kulaklik";
+    private  static  final By SEARCHING = By.id("autoCompleteAppWrapper");
+    private  static  final By SEARCH_CLICK = By.cssSelector("input[data-testid='suggestion']");
+    private  static  final By CLOSE_POPUP = By.cssSelector("div[title='Kapat']");
+
 
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    public void signIn() {
-        click(NAV_SIGN_IN);
+    public void isTrendyol() {
+        Assert.assertEquals("https://www.trendyol.com/", driver.getCurrentUrl());
     }
 
-    public void isAmazon() {
-        Assert.assertEquals("https://www.amazon.com/", driver.getCurrentUrl());
+    public void closePopUp() {
+        click(CLOSE_POPUP);
     }
 
     public void searching() {
+        click(SEARCHING);
         input(SEARCHING, search_input);
         click(SEARCH_CLICK);
     }

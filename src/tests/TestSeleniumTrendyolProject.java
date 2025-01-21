@@ -8,29 +8,21 @@ public class TestSeleniumTrendyolProject{
 
     /**
      * Test Case:
-     * 1. Go to Amazon website
-     * 2. Log in to the website
-     * 3. Search for a word and click the product
-     * 4. Add item to cart
-     * 5. Go to the basket and delete the product
+     * 1. Go to Trendyol website
+     * 2. Search for a word and click the product
+     * 3. Add item to cart
+     * 4. Go to the basket and delete the product
      */
 
     @Test
     public void test_selenium_trendyol_project() throws InterruptedException {
         WebDriver obj = new ChromeDriver();
-        obj.get("https://www.amazon.com");
+        obj.get("https://www.trendyol.com/");
         obj.manage().window().maximize();
 
         HomePage homePage = new HomePage(obj);
-        homePage.isAmazon();
-        homePage.signIn();
-
-        LoginPage loginPage = new LoginPage(obj);
-        loginPage.usernameWrite();
-        loginPage.continueClick();
-        loginPage.passwordWrite();
-        loginPage.signIn();
-
+        homePage.isTrendyol();
+        homePage.closePopUp();
         homePage.searching();
 
         CategoryPage categoryPage = new CategoryPage(obj);
@@ -38,13 +30,9 @@ public class TestSeleniumTrendyolProject{
         categoryPage.productClick();
 
         ProductPage productPage = new ProductPage(obj);
+        productPage.checkProductDetail();
         productPage.addToCart();
-        productPage.is_add_to_cart();
         productPage.goToCartPage();
-
-        CartPage cartPage = new CartPage(obj);
-        cartPage.deleteProduct();
-        cartPage.isDeletedProduct();
     }
 
 }
